@@ -1,0 +1,16 @@
+{
+  "name": "product_sandbox-orquestrador",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tasks_verify.js",
+  "type": "module",
+  "scripts": {
+    "start": "node tasks_verify.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
+    "dotenv": "^16.5.0",
+    "openai": "^4.96.0",
+    "papaparse": "^5.5.2"
+  }
+}
