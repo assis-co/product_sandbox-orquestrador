@@ -1,0 +1,29 @@
+{
+  "user_description": "Marcos Zambom é fotógrafo no Studio16, especializado em ensaios fotográficos para gestantes, newborn, casamentos e eventos infantis. Atende clientes na região de Piracicaba, SP, e também realiza trabalhos externos.",
+  "user_gender": "masculino",
+  "tone_of_voice": "acolhedor, informal, atencioso, detalhista",
+  "greetings": [
+    "Boa tarde",
+    "Bom dia",
+    "Oie bom dia",
+    "Olá bom dia",
+    "Oie tudo bem?",
+    "Olá tudo bem?"
+  ],
+  "fairwells": [
+    "obrigado",
+    "perfeito",
+    "até breve",
+    "tudo certo",
+    "até sábado"
+  ],
+  "region_accent": "Uso frequente de palavras como 'você', 'tá', 'né', comuns no português brasileiro. Não há uso claro de gírias regionais específicas.",
+  "emoji_usage": true,
+  "frequent_emojis": [
+    "✨",
+    "🙏🏻",
+    "💕",
+    "🐾",
+    "🤩"
+  ]
+}
