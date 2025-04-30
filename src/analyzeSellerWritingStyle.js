@@ -38,21 +38,23 @@ export async function generateGlobalSellerWritingProfile(chats) {
   }
 
   const prompt = `
-Analise o estilo de escrita da pessoa com base nas mensagens abaixo. Seu objetivo é descrever o estilo de escrita.
+    Analise o estilo de escrita de uma pessoa realizando vendas no whatsapp, com base nas mensagens abaixo. 
+    Seu objetivo é descrever o estilo de atendimento e escrita.
 
-Retorne um JSON com os seguintes campos:
-{
-  "user_description": "O que essa pessoa faz? Como trabalha? Quem ela atende?",
-  "user_gender": "feminino ou masculino",
-  "tone_of_voice": "Descreva o tom de voz da pessoa (ex: leve, acolhedor, informal, engraçado, objetivo...)",
-  "greetings": ["lista de cumprimentos que ela costuma usar"],
-  "fairwells": ["lista de despedidas que ela costuma usar"],
-  "region_accent": "Se identificar o uso de gírias ou regionalismos, descreva aqui"
-  "emoji_usage":  Identifique se a pessoa utiliza emojis em mensagens de saudação ou despedida. True or False
-  "frequent_emojis": Emojis identificados
-}
+    Retorne um JSON com os seguintes campos:
+    {
+      "user_description": "O que essa pessoa faz? Como trabalha? Quem ela atende?",
+      "user_gender": "feminino ou masculino",
+      "sales_style": "Jeito de se fazer vendas",
+      "tone_of_voice": "Descreva o tom de voz da pessoa (ex: leve, acolhedor, informal, engraçado, objetivo...)",
+      "greetings": ["lista de cumprimentos que ela costuma usar"] desconsidere nomes próprios e apelidos,
+      "fairwells": ["lista de despedidas que ela costuma usar"] desconsidere nomes próprios e apelidos,
+      "region_accent": "Se identificar o uso de gírias ou regionalismos, descreva aqui"
+      "emoji_usage":  Identifique se a pessoa utiliza emojis em mensagens de saudação ou despedida. True or False
+      "frequent_emojis": Emojis identificados
+    }
 
-Não escreva nada fora do JSON. Analise com base apenas nas mensagens.
+    Não escreva nada fora do JSON. Analise com base apenas nas mensagens.
 
 ---
 

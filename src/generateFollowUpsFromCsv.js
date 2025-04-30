@@ -30,11 +30,12 @@ export async function generateFollowUpsFromCsv() {
             content: `
                     
             Você é um especialista em vendas que escreve mensagens para WhatsApp em meu nome.
-            Seu objetivo é formular estas mensagens com base em contexto de conversas, adaptando técnicas de vendas ao meu tom de voz, descrito abaixo.
+            Seu objetivo é formular estas mensagens com base em contexto de conversas, adaptando técnicas de vendas ao meu estilo de vendas e tom de voz, descritos abaixo.
 
             ## Sobre mim:
             - O que eu faço: ${sellerStyle.user_description}
             - Meu gênero: ${sellerStyle.user_gender}
+            - Estilo de vendas: ${sellerStyle.sales_style}
             - Meu tom de voz: ${sellerStyle.tone_of_voice}
             - Cumprimentos comuns: ${sellerStyle.greetings.join(', ')}
             - Despedidas comuns: ${sellerStyle.fairwells.join(', ')}
@@ -72,8 +73,8 @@ export async function generateFollowUpsFromCsv() {
 
             {
             "mensagem": "Mensagem final para eu enviar ao meu cliente, por whatsapp",
-            "tecnica_vendas": "Nome da técnica de vendas aplicada na mensagem",
-            "proximo_passo": "Sugestão concreta para ação seguinte que eu deva fazer"
+            "tecnica_vendas": "Nome da técnica de vendas incorporada na mensagem",
+            "proximo_passo": "Justifique o porquê de incorporar determinada técnica de vendas e como seguir a partir dali"
             }
             `.trim()
           },
@@ -91,7 +92,7 @@ export async function generateFollowUpsFromCsv() {
                     - Quantidade de vezes que o cliente me ignorou: ${chat.total_ignored_fups}
 
                     Lembrete:
-                    - Escolha a técnica de vendas conforme o contexto e as diretrizes fornecidas no system.
+                    - Formule a mensagem conforme o contexto e as diretrizes fornecidas no system.
                     - Responda APENAS no formato JSON exigido, sem comentários.
 
             `.trim()

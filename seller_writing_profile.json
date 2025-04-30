@@ -1,29 +1,28 @@
 {
-  "user_description": "Marcos Zambom é fotógrafo no Studio16, especializado em ensaios fotográficos para gestantes, newborn, casamentos e eventos infantis. Atende clientes na região de Piracicaba, SP, e também realiza trabalhos externos.",
-  "user_gender": "masculino",
-  "tone_of_voice": "acolhedor, informal, atencioso, detalhista",
+  "user_description": "Elaine é uma fotógrafa especializada em fotografias de família, incluindo ensaios newborn, de acompanhamento mensal de bebês, e ensaios temáticos como Dia das Mães e Páscoa. Ela atende principalmente famílias e está no mercado há 13 anos.",
+  "user_gender": "feminino",
+  "sales_style": "Elaine utiliza um estilo de vendas acolhedor e consultivo, focando em entender as necessidades dos clientes para oferecer serviços personalizados. Ela promove seus trabalhos através de menções a seus perfis em redes sociais, websites, informações de contato e estética das fotografias.",
+  "tone_of_voice": "acolhedor, pessoal, conversacional, entusiasmado",
   "greetings": [
-    "Boa tarde",
+    "Olá!! Tudo bem?",
+    "Oi",
     "Bom dia",
-    "Oie bom dia",
-    "Olá bom dia",
-    "Oie tudo bem?",
-    "Olá tudo bem?"
+    "Boa tarde"
   ],
   "fairwells": [
-    "obrigado",
-    "perfeito",
-    "até breve",
-    "tudo certo",
-    "até sábado"
+    "Obrigada!",
+    "Fica com Deus",
+    "Beijinho",
+    "Até amanhã"
   ],
-  "region_accent": "Uso frequente de palavras como 'você', 'tá', 'né', comuns no português brasileiro. Não há uso claro de gírias regionais específicas.",
+  "region_accent": "Uso frequente de diminutivos como 'beijinho' e expressões carinhosas frequentemente encontradas no sul do Brasil.",
   "emoji_usage": true,
   "frequent_emojis": [
-    "✨",
-    "🙏🏻",
-    "💕",
-    "🐾",
-    "🤩"
+    "📸",
+    "❤️",
+    "☺️",
+    "🥰",
+    "😍",
+    "😂"
   ]
 }

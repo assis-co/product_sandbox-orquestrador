@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
 config();
 
-import { generateFollowUpsFromCsv } from './src/generateFollowUpsFromCsv_current_prompt.js';
+import { generateFollowUpsFromCsv } from './src/generateFollowUpsFromCsv.js';
 
 await generateFollowUpsFromCsv();

@@ -2,13 +2,17 @@ import { getChatsByCompany } from './getChatsByCompany.js';
 import { buildChatsWithMessages } from './buildChatsWithMessages.js';
 import { openai } from './openaiClient.js';
 import { writeFile } from 'fs/promises';
+import { readFile } from 'fs/promises';
 import Papa from 'papaparse';
 
 export async function analyzeChatsAndExportCSV(companyId) {
   const chats = await getChatsByCompany(companyId);
   const chatsWithConvo = await buildChatsWithMessages(chats);
-
+  const sellerStyleRaw = await readFile('./seller_writing_profile.json', 'utf8');
+  const sellerStyle = JSON.parse(sellerStyleRaw);
   const results = [];
+  const today = new Date().toISOString().split('T')[0]; // ex: "2025-04-29"
+
 
   for (const chat of chatsWithConvo) {
     const fullChat = chats.find(c => c.chat_id === chat.chat_id);
@@ -34,14 +38,22 @@ export async function analyzeChatsAndExportCSV(companyId) {
                     Seu objetivo é analisar uma conversa no WhatsApp e identificar se há alguma pendência entre mim (eu) e o contato (cliente)
                     Meu objetivo é sempre estar em contato com o meu cliente e fazê-los contratar meus serviços.
 
+                    Sobre mim:
+                    - O que eu faço: ${sellerStyle.user_description}
+                    - Meu gênero: ${sellerStyle.user_gender}
+                    - Estilo de vendas: ${sellerStyle.sales_style}
+                    - Meu tom de voz: ${sellerStyle.tone_of_voice}
+
                     Instruções:
                     - Leia toda a conversa com atenção
                     - Use os timestamps para entender a ordem das mensagens
                     - Considere os seguintes dados da conversa:
+                        - A data de hoje é: ${today}.
                         - Data da Última mensagem do cliente (cliente): ${input.last_buyer_message_time}
                         - Data da Última mensagem enviada por mim: ${input.last_seller_message_time}
                         - Total de follow-ups ignorados: ${input.total_ignored_fups}
                         - Sempre responda estritamente no formato JSON solicitado, sem comentários adicionais.
+
             `.trim()
           },
           {
@@ -55,10 +67,11 @@ export async function analyzeChatsAndExportCSV(companyId) {
                         "last_buyer_message_time": "${input.last_buyer_message_time}" ou null,
                         "last_seller_message_time": "${input.last_seller_message_time}" ou null,
                         "total_ignored_fups": ${input.total_ignored_fups},
-                        "summary": "Resumo das últimas interações (máximo 400 caracteres)",
+                        "summary": "Resumo das últimas interações (máximo 500 caracteres)",
                         "need_task": true ou false,
-                        "task": "Descrição da pendência principal (máximo 400 caracteres)",
-                        "due_date": "2025-05-02" ou null,
+                        "task": "Descrição da pendência principal (máximo 500 caracteres)",
+                        "due_date": "Sugira uma data futura para retomar o contato com este cliente, no formato yyyy-mm-dd. Hoje é ${today}. A data sugerida deve ser hoje ou posterior. Se não for possível sugerir uma data com base na conversa, use null (sem aspas)."
+                        Se não for possível sugerir uma data com base na conversa, use null (sem aspas).",
                         "owner": "buyer ou seller"
                         }
                         
@@ -101,6 +114,13 @@ export async function analyzeChatsAndExportCSV(companyId) {
         }
         if (typeof resultado.owner === 'string') {
             resultado.owner = resultado.owner.toLowerCase();
+        }
+        if (
+          resultado.due_date &&
+          typeof resultado.due_date === 'string' &&
+          new Date(resultado.due_date) < new Date(today)
+        ) {
+          resultado.due_date = null;
         }
         
         } catch (err) {
