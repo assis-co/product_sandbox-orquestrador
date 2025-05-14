@@ -25,7 +25,9 @@ async function getMessagesByChatId(chatId) {
     .from('messages')
     .select('body, timestamp, phone_last_eight_digits')
     .eq('chat_id', chatId)
-    .order('timestamp', { ascending: true });
+    .order('timestamp', { ascending: false })
+    .limit(150);
+  
 
   if (error) {
     console.error(`Erro ao buscar mensagens do chat_id ${chatId}:`, error);

@@ -37,7 +37,7 @@ export async function generateFollowUpsFromCsv() {
             - Meu gênero: ${sellerStyle.user_gender}
             - Estilo de vendas: ${sellerStyle.sales_style}
             - Meu tom de voz: ${sellerStyle.tone_of_voice}
-            - Cumprimentos comuns: ${sellerStyle.greetings.join(', ')}
+            - Cumprimentos comuns: ${sellerStyle.greetings.join(', ')} e sempre que possível, mencionando o nome do cliente.
             - Despedidas comuns: ${sellerStyle.fairwells.join(', ')}
             - Uso de emojis: ${sellerStyle.emoji_usage} (usar apenas se houver intimidade)
             - Emojis permitidos: ${sellerStyle.frequent_emojis}

@@ -20,6 +20,9 @@ export async function getChatsByCompany(companyId) {
     return { dayStartUnix, dayEndUnix };
   }
 
+  const fourteenDaysAgo = new Date(now.getTime() - (14 * 24 * 60 * 60 * 1000));
+  const fourteenDaysAgoUnix = Math.floor(fourteenDaysAgo.getTime() / 1000);
+
   const { dayStartUnix: threeStart, dayEndUnix: threeEnd } = getDayUnixRange(3);
   const { dayStartUnix: sevenStart, dayEndUnix: sevenEnd } = getDayUnixRange(7);
   const { dayStartUnix: fifteenStart, dayEndUnix: fifteenEnd } = getDayUnixRange(15);
@@ -28,13 +31,10 @@ export async function getChatsByCompany(companyId) {
     .from('chats')
     .select('id, company_id, chat_id, contact_phone, last_message_time, last_buyer_message_time, last_seller_message_time, created_at, total_ignored_fups')
     .eq('company_id', companyId)
-    .not('last_deal_created', 'is', null)
     .or(
       [
-        `and(last_message_time.gte.${todayMidnightUnix},last_message_time.lte.${twoHoursAgoUnix})`,
-        `and(last_message_time.gte.${threeStart},last_message_time.lte.${threeEnd})`,
-        `and(last_message_time.gte.${sevenStart},last_message_time.lte.${sevenEnd})`,
-        `and(last_message_time.gte.${fifteenStart},last_message_time.lte.${fifteenEnd})`
+        `last_buyer_message_time.gte.${fourteenDaysAgoUnix}`,
+        `and(last_buyer_message_time.is.null,last_message_time.gte.${fourteenDaysAgoUnix})`
       ].join(',')
     )
     .order('last_message_time', { ascending: false });

@@ -1,28 +1,40 @@
 {
-  "user_description": "Elaine é uma fotógrafa especializada em fotografias de família, incluindo ensaios newborn, de acompanhamento mensal de bebês, e ensaios temáticos como Dia das Mães e Páscoa. Ela atende principalmente famílias e está no mercado há 13 anos.",
+  "user_description": "Esta pessoa trabalha como fotógrafa e lida com serviços de fotografia, principalmente voltados para imagens de casamentos, eventos, e ensaios. Também parece ter envolvimento com o setor de planejamento financeiro, mencionando clientes que requerem ajustes em apólices e pagamentos. Atende clientes individuais interessados em fotografia e serviços financeiros, além de comunicação direta para ajustes e dúvidas.",
   "user_gender": "feminino",
-  "sales_style": "Elaine utiliza um estilo de vendas acolhedor e consultivo, focando em entender as necessidades dos clientes para oferecer serviços personalizados. Ela promove seus trabalhos através de menções a seus perfis em redes sociais, websites, informações de contato e estética das fotografias.",
-  "tone_of_voice": "acolhedor, pessoal, conversacional, entusiasmado",
+  "sales_style": "1. Inicia contato amigável, apresentando-se e oferecendo serviços. 2. Explica limitações de suporte momentâneas e pretende retornar contato quando possível. 3. Responde a necessidades específicas do cliente, como mudanças de beneficiários ou formas de pagamento em apólices financeiras. 4. Segue para detalhamento dos serviços, como comissões e instruções em processos de recrutamento. 5. Completa sessões de atendimento com agradecimentos e confirmações de comunicação futura.",
+  "faq": {
+    "Interesse em construir imagem": "Contato inicial para verificar interesse do cliente em serviço de fotografia.",
+    "Formas de pagamento": "Se não for possível com pix, pode ser boleto.",
+    "Coberturas específicas": "Cobertura sugerida com base em condição médica ou posição profissional (ex.: bombeiro militar, HIV positivo).",
+    "Planos de saúde e benefícios": "Descrição dos planos e benefícios diferentes de seguradoras tradicionais."
+  },
+  "tone_of_voice": "O tom de voz utilizado é amigável, acolhedor, otimista e informal, com uso frequente de termos de familiaridade e cordialidade. Há expressões de fé e esperança em contextos mais pessoais.",
   "greetings": [
-    "Olá!! Tudo bem?",
     "Oi",
+    "Olá",
     "Bom dia",
     "Boa tarde"
   ],
   "fairwells": [
-    "Obrigada!",
-    "Fica com Deus",
-    "Beijinho",
-    "Até amanhã"
+    "Obrigada",
+    "Muito obrigada",
+    "Agradeço a compreensão",
+    "Deus te abençoe"
   ],
-  "region_accent": "Uso frequente de diminutivos como 'beijinho' e expressões carinhosas frequentemente encontradas no sul do Brasil.",
+  "region_accent": "Uso de expressões como 'Ei boy', 'Eita', 'Blz', 'Kkkkk', que podem indicar sotaque ou gírias da região nordeste do Brasil.",
   "emoji_usage": true,
   "frequent_emojis": [
-    "📸",
-    "❤️",
-    "☺️",
     "🥰",
-    "😍",
-    "😂"
+    "📷",
+    "🌿",
+    "🙏🏻",
+    "❤️",
+    "😘",
+    "💚",
+    "🥹",
+    "🍀",
+    "💫",
+    "🤍",
+    "📸"
   ]
 }

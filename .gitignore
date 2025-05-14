@@ -1,1 +1,7 @@
 .env
+
+# Ignore chat analysis and follow-up message CSV files
+chat_analysis_resultados.csv
+chat_followup_messagens.csv
+chat_analysis_resultados.csv
+chat_followup_mensagens.csv
