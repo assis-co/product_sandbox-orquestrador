@@ -1,6 +1,32 @@
 import { supabase } from './supabaseClient.js';
 import { openai } from './openaiClient.js';
 import { writeFile } from 'fs/promises';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Resolve __dirname for ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+/**
+ * Filtra os chats com base no arquivo contact_list.csv
+ */
+function filterChatsByContactList(chats) {
+  const csvFilePath = path.resolve(__dirname, '../contact_list.csv');
+  const csvData = fs.readFileSync(csvFilePath, 'utf-8');
+  const contactList = csvData.split('\n').slice(1).map(line => {
+    const [csvCompanyId, lastEightDigits] = line.split(',');
+    return { companyId: csvCompanyId, lastEightDigits: lastEightDigits?.trim() };
+  });
+
+  const lastEightDigitsList = contactList.map(contact => contact.lastEightDigits);
+
+  return chats.filter(chat => {
+    const contactPhoneLastEight = chat.contact_phone.slice(-8);
+    return lastEightDigitsList.includes(contactPhoneLastEight);
+  });
+}
 
 /**
  * Busca todas as mensagens dos chats e filtra apenas as do seller
@@ -47,7 +73,8 @@ async function getAllSellerMessages(chatIds) {
  * Gera um único perfil de escrita baseado nas mensagens do seller
  */
 export async function generateGlobalSellerWritingProfile(chats) {
-  const chatIds = chats.map(c => c.chat_id);
+  const filteredChats = filterChatsByContactList(chats);
+  const chatIds = filteredChats.map(c => c.chat_id);
   const messages = await getAllSellerMessages(chatIds);
 
   if (messages.length < 10) {

@@ -1,40 +1,22 @@
 {
-  "user_description": "Esta pessoa trabalha como fotógrafa e lida com serviços de fotografia, principalmente voltados para imagens de casamentos, eventos, e ensaios. Também parece ter envolvimento com o setor de planejamento financeiro, mencionando clientes que requerem ajustes em apólices e pagamentos. Atende clientes individuais interessados em fotografia e serviços financeiros, além de comunicação direta para ajustes e dúvidas.",
+  "user_description": "A pessoa trabalha como vendedora ou representante comercial, focada em promover eventos de treinamento e produtos de seguros. Seu público inclui corretores de seguros e possivelmente outros profissionais do setor financeiro ou de serviços. Ela parece atuar na captação e gestão de clientes, incentivando participação em eventos e no uso dos produtos oferecidos.",
   "user_gender": "feminino",
-  "sales_style": "1. Inicia contato amigável, apresentando-se e oferecendo serviços. 2. Explica limitações de suporte momentâneas e pretende retornar contato quando possível. 3. Responde a necessidades específicas do cliente, como mudanças de beneficiários ou formas de pagamento em apólices financeiras. 4. Segue para detalhamento dos serviços, como comissões e instruções em processos de recrutamento. 5. Completa sessões de atendimento com agradecimentos e confirmações de comunicação futura.",
-  "faq": {
-    "Interesse em construir imagem": "Contato inicial para verificar interesse do cliente em serviço de fotografia.",
-    "Formas de pagamento": "Se não for possível com pix, pode ser boleto.",
-    "Coberturas específicas": "Cobertura sugerida com base em condição médica ou posição profissional (ex.: bombeiro militar, HIV positivo).",
-    "Planos de saúde e benefícios": "Descrição dos planos e benefícios diferentes de seguradoras tradicionais."
-  },
-  "tone_of_voice": "O tom de voz utilizado é amigável, acolhedor, otimista e informal, com uso frequente de termos de familiaridade e cordialidade. Há expressões de fé e esperança em contextos mais pessoais.",
+  "sales_style": "Inicia o contato com saudações e verificações de bem-estar. Em seguida, promove treinamentos e eventos, geralmente fornecendo links para inscrição. Usa lembretes amigáveis e incentiva ações, demonstrando disposição para suporte frequente. Também faz acompanhamento, pergunta sobre andamento de processos e disponibilidade para tirar dúvidas ou resolver pendências.",
+  "tone_of_voice": "Informal, objetivo, e por vezes brincalhão. Emprega um tom direto, mas também amigável, através de uso de gírias e expressões coloquiais.",
   "greetings": [
-    "Oi",
-    "Olá",
-    "Bom dia",
-    "Boa tarde"
+    "Olá, boa tarde",
+    "Boa tarde",
+    "Bom dia"
   ],
   "fairwells": [
-    "Obrigada",
-    "Muito obrigada",
-    "Agradeço a compreensão",
-    "Deus te abençoe"
+    "Boa semana para nós",
+    "Qualquer coisa chama aqui",
+    "Até mais"
   ],
-  "region_accent": "Uso de expressões como 'Ei boy', 'Eita', 'Blz', 'Kkkkk', que podem indicar sotaque ou gírias da região nordeste do Brasil.",
+  "region_accent": "Uso de gírias e expressões como 'vc', 'pq', e termos coloquiais como 'queixudo', 'xuxu' e 'nojento', sugerem uma comunicação casual e potencialmente influenciada por um sotaque ou cultura regional brasileira, possivelmente nordestina.",
   "emoji_usage": true,
   "frequent_emojis": [
-    "🥰",
-    "📷",
-    "🌿",
-    "🙏🏻",
-    "❤️",
-    "😘",
-    "💚",
-    "🥹",
-    "🍀",
-    "💫",
-    "🤍",
-    "📸"
+    "😍",
+    "👆🏻"
   ]
 }

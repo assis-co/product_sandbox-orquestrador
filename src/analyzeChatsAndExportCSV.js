@@ -143,7 +143,7 @@ export async function analyzeChatsAndExportCSV(companyId) {
       results.push({
         chat_id: resultado.chat_id,
         company_id: resultado.company_id,
-        last_message_time: resultado.last_message_time !== null ? String(resultado.last_message_time) : '',
+        last_message_time: resultado.last_message_time !== null ? new Date(resultado.last_message_time * 1000).toLocaleString('pt-BR') : '',
         last_buyer_message_time: resultado.last_buyer_message_time !== null ? String(resultado.last_buyer_message_time) : '',
         last_seller_message_time: resultado.last_seller_message_time !== null ? String(resultado.last_seller_message_time) : '',
         total_ignored_fups: resultado.total_ignored_fups !== null ? parseInt(resultado.total_ignored_fups) : 0,
@@ -166,8 +166,6 @@ export async function analyzeChatsAndExportCSV(companyId) {
         'chat_id',
         'company_id',
         'last_message_time',
-        'last_buyer_message_time',
-        'last_seller_message_time',
         'total_ignored_fups',
         'summary',
         'need_task',

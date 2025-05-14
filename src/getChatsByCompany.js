@@ -1,42 +1,30 @@
 import { supabase } from './supabaseClient.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Resolve __dirname for ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export async function getChatsByCompany(companyId) {
-  const now = new Date();
-  const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const twoHoursAgo = new Date(now.getTime() - (2 * 60 * 60 * 1000));
+  // Load and parse the contact_list.csv file
+  const csvFilePath = path.resolve(__dirname, '../contact_list.csv');
+  const csvData = fs.readFileSync(csvFilePath, 'utf-8');
+  const contactList = csvData.split('\n').slice(1).map(line => {
+    const [csvCompanyId, lastEightDigits] = line.split(',');
+    return { companyId: csvCompanyId, lastEightDigits: lastEightDigits?.trim() };
+  });
 
-  const todayMidnightUnix = Math.floor(todayMidnight.getTime() / 1000);
-  const twoHoursAgoUnix = Math.floor(twoHoursAgo.getTime() / 1000);
+  // Filter the contact list for the given companyId
+  const filteredContacts = contactList.filter(contact => contact.companyId === companyId);
+  const lastEightDigitsList = filteredContacts.map(contact => contact.lastEightDigits);
 
-  function getDayUnixRange(daysAgo) {
-    const day = new Date();
-    day.setDate(day.getDate() - daysAgo);
-    day.setHours(0, 0, 0, 0);
-    const dayStartUnix = Math.floor(day.getTime() / 1000);
-
-    day.setHours(23, 59, 59, 999);
-    const dayEndUnix = Math.floor(day.getTime() / 1000);
-
-    return { dayStartUnix, dayEndUnix };
-  }
-
-  const fourteenDaysAgo = new Date(now.getTime() - (14 * 24 * 60 * 60 * 1000));
-  const fourteenDaysAgoUnix = Math.floor(fourteenDaysAgo.getTime() / 1000);
-
-  const { dayStartUnix: threeStart, dayEndUnix: threeEnd } = getDayUnixRange(3);
-  const { dayStartUnix: sevenStart, dayEndUnix: sevenEnd } = getDayUnixRange(7);
-  const { dayStartUnix: fifteenStart, dayEndUnix: fifteenEnd } = getDayUnixRange(15);
-
+  // Query the database
   const { data, error } = await supabase
     .from('chats')
     .select('id, company_id, chat_id, contact_phone, last_message_time, last_buyer_message_time, last_seller_message_time, created_at, total_ignored_fups')
     .eq('company_id', companyId)
-    .or(
-      [
-        `last_buyer_message_time.gte.${fourteenDaysAgoUnix}`,
-        `and(last_buyer_message_time.is.null,last_message_time.gte.${fourteenDaysAgoUnix})`
-      ].join(',')
-    )
     .order('last_message_time', { ascending: false });
 
   if (error) {
@@ -44,5 +32,11 @@ export async function getChatsByCompany(companyId) {
     throw error;
   }
 
-  return data;
+  // Filter chats based on the last eight digits of contact_phone
+  const filteredData = data.filter(chat => {
+    const contactPhoneLastEight = chat.contact_phone.slice(-8);
+    return lastEightDigitsList.includes(contactPhoneLastEight);
+  });
+
+  return filteredData;
 }
